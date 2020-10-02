@@ -1,0 +1,14 @@
+Documentation: 
+
+[En] What's New in JDK 8 https://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html
+
+Additional Advanced Content: 
+
+[RU] Тагир Валеев — Stream API: рекомендации лучших собаководов [RU] Тагир Валеев — Странности Stream API
+https://www.youtube.com/watch?v=vxikpWnnnCU
+
+Books: 
+
+Java SE 8 for Really Impatient https://www.horstmann.com/java8/index.html
+
+Java 8 in Action https://www.manning.com/books/java-8-in-action
