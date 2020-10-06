@@ -8,7 +8,7 @@ public class Java8ParallelAggregator implements Aggregator {
 
     @Override
     public int sum(List<Integer> numbers) {
-        throw new UnsupportedOperationException();
+        return numbers.parallelStream().reduce(0, Integer::sum);
     }
 
     @Override

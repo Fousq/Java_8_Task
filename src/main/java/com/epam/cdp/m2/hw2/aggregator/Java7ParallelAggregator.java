@@ -1,14 +1,19 @@
 package com.epam.cdp.m2.hw2.aggregator;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ForkJoinPool;
 
+import com.epam.cdp.m2.hw2.aggregator.task.SumRecursiveTask;
 import javafx.util.Pair;
 
 public class Java7ParallelAggregator implements Aggregator {
+    private static ForkJoinPool forkJoinPool = new ForkJoinPool(2);
 
     @Override
     public int sum(List<Integer> numbers) {
-        throw new UnsupportedOperationException();
+        Integer sum = forkJoinPool.invoke(new SumRecursiveTask(numbers));
+        return Objects.nonNull(sum) ? sum : 0;
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Java8Aggregator implements Aggregator {
 
     @Override
     public int sum(List<Integer> numbers) {
-        throw new UnsupportedOperationException();
+        return numbers.stream().reduce(0, Integer::sum);
     }
 
     @Override
