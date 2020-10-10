@@ -42,7 +42,11 @@ public abstract class JavaAggregatorDuplicatesTest {
 
     @Test
     public void test() {
+        long start = System.currentTimeMillis();
         List<String> actual = aggregator.getDuplicates(words, limit);
+        long end = System.currentTimeMillis();
         assertEquals(expected, actual);
+        System.out.println("The " + aggregator.getClass()
+                + " class takes " + (end - start) + " ml sec to execute duplicates");
     }
 }

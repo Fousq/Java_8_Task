@@ -1,15 +1,14 @@
 package com.epam.cdp.m2.hw2.aggregator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+import com.epam.cdp.m2.hw2.aggregator.comparator.WordComparator;
 import com.epam.cdp.m2.hw2.aggregator.comparator.WordFrequentComparator;
 import javafx.util.Pair;
 
 public class Java7Aggregator implements Aggregator {
     private static final WordFrequentComparator wordFrequentComparator = new WordFrequentComparator();
+    private static final WordComparator wordComparator = new WordComparator();
 
     @Override
     public int sum(List<Integer> numbers) {
@@ -53,6 +52,18 @@ public class Java7Aggregator implements Aggregator {
 
     @Override
     public List<String> getDuplicates(List<String> words, long limit) {
-        throw new UnsupportedOperationException();
+        Set<String> duplicates = new HashSet<>();
+        for (int i = 0; i < words.size(); i++) {
+            String word = words.get(i).toUpperCase();
+            for (int j = i + 1; j < words.size(); j++) {
+                if (Objects.equals(word, words.get(j).toUpperCase())) {
+                    duplicates.add(word);
+                    break;
+                }
+            }
+        }
+        List<String> result = new ArrayList<>(duplicates);
+        result.sort(wordComparator);
+        return result.size() >= limit ? result.subList(0, (int) limit) : result;
     }
 }

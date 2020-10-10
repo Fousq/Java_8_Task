@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ForkJoinPool;
 
+import com.epam.cdp.m2.hw2.aggregator.task.DuplicateCollectTask;
 import com.epam.cdp.m2.hw2.aggregator.task.SumRecursiveTask;
 import com.epam.cdp.m2.hw2.aggregator.task.WordFrequentCollectTask;
 import javafx.util.Pair;
@@ -24,6 +25,6 @@ public class Java7ParallelAggregator implements Aggregator {
 
     @Override
     public List<String> getDuplicates(List<String> words, long limit) {
-        throw new UnsupportedOperationException();
+        return forkJoinPool.invoke(new DuplicateCollectTask(words, limit));
     }
 }
