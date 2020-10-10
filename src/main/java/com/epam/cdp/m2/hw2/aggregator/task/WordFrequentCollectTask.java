@@ -35,7 +35,7 @@ public class WordFrequentCollectTask extends RecursiveTask<List<Pair<String, Lon
                 merge(wordsFrequent, task.join());
             }
             wordsFrequent.sort(wordFrequentComparator);
-            return wordsFrequent.subList(0, (int) limit);
+            return wordsFrequent.size() >= limit && limit > 0 ? wordsFrequent.subList(0, (int) limit) : wordsFrequent;
         }
         wordsFrequent = collect(words);
         wordsFrequent.sort(wordFrequentComparator);
