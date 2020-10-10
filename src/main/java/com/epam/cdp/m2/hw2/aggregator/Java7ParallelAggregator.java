@@ -5,10 +5,11 @@ import java.util.Objects;
 import java.util.concurrent.ForkJoinPool;
 
 import com.epam.cdp.m2.hw2.aggregator.task.SumRecursiveTask;
+import com.epam.cdp.m2.hw2.aggregator.task.WordFrequentCollectTask;
 import javafx.util.Pair;
 
 public class Java7ParallelAggregator implements Aggregator {
-    private static ForkJoinPool forkJoinPool = new ForkJoinPool(2);
+    private static final ForkJoinPool forkJoinPool = new ForkJoinPool(2);
 
     @Override
     public int sum(List<Integer> numbers) {
@@ -18,7 +19,7 @@ public class Java7ParallelAggregator implements Aggregator {
 
     @Override
     public List<Pair<String, Long>> getMostFrequentWords(List<String> words, long limit) {
-        throw new UnsupportedOperationException();
+        return forkJoinPool.invoke(new WordFrequentCollectTask(words, limit));
     }
 
     @Override

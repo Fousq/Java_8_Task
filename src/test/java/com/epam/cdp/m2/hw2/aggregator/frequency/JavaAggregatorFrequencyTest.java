@@ -44,7 +44,11 @@ public abstract class JavaAggregatorFrequencyTest {
 
     @Test
     public void test() {
+        long start = System.currentTimeMillis();
         List<Pair<String, Long>> actual = aggregator.getMostFrequentWords(words, limit);
+        long end = System.currentTimeMillis();
         assertEquals(expected, actual);
+        System.out.println("The " + aggregator.getClass()
+                + " class takes " + (end - start) + " ml sec to execute most frequent words");
     }
 }
